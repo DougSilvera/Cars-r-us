@@ -1,13 +1,21 @@
-import { getColors } from "./database.js";
+import { getColors, setOrderColor } from "./database.js";
 
 const colors= getColors()
+
+document.addEventListener(
+    "change", (event) => {
+        if (event.target.id === "color") {
+            setOrderColor (parseInt(event.target.value))
+        }
+    }
+)
 
 export const carColors = () => {
     let html= `<select id="color">
     <option value="0">Choose Color</option>`
     const listColors = colors.map(color => {
         return `
-            <option value="1">${color.name}</option>
+            <option name="color" value=${color.id}>${color.name}</option>
             `
     })
     html += listColors.join("")

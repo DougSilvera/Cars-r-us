@@ -1,8 +1,14 @@
-import { getTechnologies } from "./database.js"
+import { getTechnologies, setOrderTechnology } from "./database.js"
 
 const technologies = getTechnologies()
 
-
+document.addEventListener(
+    "change", (event) => {
+        if (event.target.id === "Technology Packages") {
+            setOrderTechnology (parseInt(event.target.value))
+        }
+    }
+)
 
 
 export const carTechnologies = () => {
@@ -10,7 +16,7 @@ export const carTechnologies = () => {
     <option value="0">Choose Technology Package</option>`
     const listTechnologies = technologies.map(technology => {
         return `
-            <option value="1">${technology.name}</option>
+            <option name="Technology Packages" value=${technology.id}>${technology.name}</option>
             `
     })
     html += listTechnologies.join("")
