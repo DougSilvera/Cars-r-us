@@ -1,16 +1,22 @@
-import { getWheelPackages } from "./database.js"
+import { getWheelPackages, setOrderWheel } from "./database.js"
 
 const wheelPackages = getWheelPackages()
 
-
+document.addEventListener(
+    "change", (event) => {
+        if (event.target.id === "Wheel Packages") {
+            setOrderWheel (parseInt(event.target.value))
+        }
+    }
+)
 
 
 export const carWheelPackages = () => {
-    let html= `<select id="Wheel and Tire Packages">
-    <option value="0">Choose wheel/tire package</option>`
+    let html= `<select id="Wheel Packages">
+    <option value="0">Choose wheel package</option>`
     const listWheelPackages = wheelPackages.map(wheelPackage => {
         return `
-            <option value="1">${wheelPackage.name}</option>
+            <option name="wheel packages" value=${wheelPackage.id}>${wheelPackage.name}</option>
             `
     })
     html += listWheelPackages.join("")
