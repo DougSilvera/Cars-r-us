@@ -19,7 +19,7 @@ const buildOrderItem = (order) => {
         currency: "USD"
     })
     return `<li>
-        Order #${order.id} costs ${costString}
+        Your ${foundColors.name} car includes ${foundInteriors.name} interior, ${foundTechnologies.name} technology, ${foundWheels.name} wheels, and costs ${costString}
     </li>`
 }
 
